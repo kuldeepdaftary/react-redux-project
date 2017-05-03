@@ -1,16 +1,16 @@
 import {LOAD_COURSES_SUCCESS} from './actionTypes';
-import courseApi from '../api/mockCourseApi';
+import CourseApi from '../api/mockCourseApi';
 
-export function loadCoursesSuccess(course) {
+export function loadCoursesSuccess(courses) {
   return {
     type: LOAD_COURSES_SUCCESS,
-    course
+    courses
   }
 }
 
 export function loadCourses() {
-  return function(dispatch) {
-    return courseApi.getAllCourses().then(courses => {
+  return (dispatch) => {
+    return CourseApi.getAllCourses().then(courses => {
       dispatch(loadCoursesSuccess(courses));
     }).catch(error => {
       throw(error);
